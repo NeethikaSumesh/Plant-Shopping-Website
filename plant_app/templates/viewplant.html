@@ -1,0 +1,26 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Image</th>
+            
+        </tr>
+        </thead>
+        <tbody>
+            {% for j in data %}
+            <tr>
+                <td>{{j.plantname}}</td>
+                <td>{{j.description}}</td>
+                <td><img src="{{j.plant_image.url}}" style="width:80px; height:80px;"></td>
+              
+                
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

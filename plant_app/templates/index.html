@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        body {
+            background-color: lightyellow;
+        }
+        header{
+            background-color: rgb(26, 226, 99);
+            height: 100px;
+        }*{
+            margin: 0px;
+            padding: 0px;
+        }
+        .nav{
+            color: aliceblue;
+            float: right;
+        }
+        ul{
+            list-style-type: none;
+            margin-right: 20px;
+        }
+        li {
+            display: inline-block;
+            margin: 0px 50px;
+        }
+        .nav a{
+            color:aliceblue;
+            text-decoration: none;
+        }
+        footer {
+            background-color: rgb(26, 226, 99);
+            height: 100px;
+            margin-top: 550px;
+        }
+        footer h3,p {
+            color: white;
+            text-align: center;
+        }
+        #form,#login{
+            background-color: white;
+            text-align:center;
+            margin-left:auto;
+            margin-right:auto;
+            margin-top:20px;
+            border:solid black 1px;
+            width:500px;
+            padding:30px 50px 30px 50px;
+            border-radius:20px;
+
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Shop Your Plants</h1>
+        <div class="nav">
+            <ul>
+                <li><a href="{% url 'index' %} ">Home</a></li>
+                <li><a href="{% url 'register' %} ">Register</a></li>
+                <li><a href="{% url 'login' %} ">Login</a></li>
+                <li><a href="{% url 'viewdata' %} ">View</a></li>
+                <li><a href="{% url 'viewbook' %} ">View Bookings</a></li>
+
+                
+            </ul>
+        </div>
+    </header>
+    {% block content %}
+    <div class="container">
+        <div class="row">
+        {% for j in data %}
+        <div class="col-sm-6 pt-3" style="width: 400px; margin-top:25px;">
+            <div class="card text-center pt-3">
+        <img class="card-img-top" src="{{j.plant_image.url}}"  alt="card images" style="height: 15rem;">
+        
+        <div class="card-body">
+            <h4 class="card-title">{{j.plantname}}</h4>
+          <a href="{% url 'view' did=j.id %}" class="btn btn-primary">view</a>
+        </div>
+            </div>
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+    {% endblock %}
+
+    <footer>
+        <h3>Online Shopping</h3>
+        <p>&copy;Contact Number:8590657782</p>
+    </footer>
+</body>
+</html>

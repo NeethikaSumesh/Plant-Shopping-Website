@@ -1,0 +1,24 @@
+{% extends "loginhome.html" %}
+{% load static %}
+{% block content %}
+<div id="book">
+    <form action="{% url 'getvalue' %}" method="POST">
+        {% csrf_token %}
+        <label for="name">Person Name</label>
+        <input type="text" name="pname" id="pname" placeholder="Enter name"><br><br>
+        <label for="phone">Phone no:</label>
+        <input type="text" name="phone" id="phone" placeholder="Enter phone number"><br><br>
+        <label for="address">Address</label>
+        <textarea name="address"></textarea><br><br>
+        <label for="plants">Choose your Plant:</label>
+        <select id="plants" name="plants">
+            <option value="">...........</option>
+            {% for j in data %}
+            <option value="{{ j.plantname }}">{{j.plantname}}</option>
+            {% endfor %}
+        </select><br><br>
+        <button class="btn btn-success">Book</button>
+        
+    </form>
+</div>
+{% endblock %}

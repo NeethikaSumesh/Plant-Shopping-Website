@@ -1,0 +1,24 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Address</th>
+            <th>Plant</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for j in data %}
+        <tr>
+            <td>{{j.pname}}</td>
+            <td>{{j.phone}}</td>
+            <td>{{j.address}}</td>
+            <td>{{j.plants}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+{% endblock %}
